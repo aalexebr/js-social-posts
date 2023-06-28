@@ -87,7 +87,7 @@ for(let i =0; i < posts.length; i++){
                 </a>
             </div>
             <div class="likes__counter">
-                Piace a <b id="like-counter-${i}" class="js-likes-counter" type="button">${getRng(1,100)}</b> persone
+                Piace a <b id="like-counter-${i}" class="js-likes-counter" type="button">${posts[i]['likes']}</b> persone
             </div>
         </div> 
     </div>            
@@ -106,7 +106,7 @@ for(let i =0; i < allBtns.length; i++){
         allBtns[i].classList.add('like-button--liked')
         
         document.getElementById(`like-counter-${i}`).innerHTML= likeNumber+1
-        likedPosts.push(i)
+        likedPosts.push(posts[i]['id'])
         console.log(likedPosts)
         
     })
