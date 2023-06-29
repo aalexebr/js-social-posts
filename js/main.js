@@ -81,7 +81,7 @@ for(let i =0; i < posts.length; i++){
     <div class="post__footer">
         <div class="likes js-likes">
             <div class="likes__cta">
-                <a class="like-button  js-like-button" href="#/" data-postid="1">
+                <a class="like-button  js-like-button" href="#/" data-postid="${posts[i]}">
                     <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                     <span class="like-button__label">Mi Piace</span>
                 </a>
@@ -97,17 +97,32 @@ document.querySelector('.posts-list').innerHTML+= singlePost
 }
 let likedPosts = []
 const allBtns = document.querySelectorAll('.like-button');
-
+ count = 0
 // console.log('')
 for(let i =0; i < allBtns.length; i++){
     const likeNumber = parseInt(document.getElementById(`like-counter-${i}`).innerHTML)
     
     allBtns[i].addEventListener('click', function(){
-        allBtns[i].classList.add('like-button--liked')
+       
         
-        document.getElementById(`like-counter-${i}`).innerHTML= likeNumber+1
-        likedPosts.push(posts[i]['id'])
-        console.log(likedPosts)
+        // count ++
+       
+        
+        
+        // if (allBtns[i].contains('like-button--liked')){
+            
+        //     allBtns[i].classList.remove('like-button--liked')
+        //     document.getElementById(`like-counter-${i}`).innerHTML= likeNumber-1
+        //     // count = 0
+        // }
+        if(!allBtns[i].classList.contains('like-button--liked')){
+            allBtns[i].classList.add('like-button--liked')
+            likedPosts.push(posts[i].id)
+             document.getElementById(`like-counter-${i}`).innerHTML= likeNumber+1
+             console.log(likedPosts, count)
+        }
+        
+        
         
     })
 }
@@ -116,6 +131,3 @@ console.log(likedPosts)
 
 
 // FUNCTIONS
-function getRng(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
